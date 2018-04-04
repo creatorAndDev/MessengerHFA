@@ -22,8 +22,13 @@ public class CreateMesssageActivity extends AppCompatActivity {
         String messagetext = messageView.getText().toString();
 
         //Intent for inner activity ReceiveMessageActivity
-        Intent intent = new Intent(this, ReceiveMessageActivity.class);
-        intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, messagetext);
+//Intent intent = new Intent(this, ReceiveMessageActivity.class);
+//intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, messagetext);
+
+        //Intent for others app which has action send
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, messagetext);
 
         startActivity(intent);
     }
