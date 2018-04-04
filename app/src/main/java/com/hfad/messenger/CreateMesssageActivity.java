@@ -1,5 +1,6 @@
 package com.hfad.messenger;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,15 +22,18 @@ public class CreateMesssageActivity extends AppCompatActivity {
         EditText messageView = (EditText) findViewById(R.id.message);
         String messagetext = messageView.getText().toString();
 
-        //Intent for inner activity ReceiveMessageActivity
+        try {
+            //Intent for inner activity ReceiveMessageActivity
 //Intent intent = new Intent(this, ReceiveMessageActivity.class);
 //intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, messagetext);
 
-        //Intent for others app which has action send
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, messagetext);
+            //Intent for others app which has action send
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            //type data MIME text/plain
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, messagetext);
+            startActivity(intent);
 
-        startActivity(intent);
+        } catch (ActivityNotFoundException e) {}
     }
 }
