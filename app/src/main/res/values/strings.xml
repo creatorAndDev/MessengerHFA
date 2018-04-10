@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Messenger</string>
     <string name="title_activity_receive_message">Inner Page</string>
+    <string name="chooser">Send message...</string>
 
     <string name="send">Send Message</string>
 </resources>

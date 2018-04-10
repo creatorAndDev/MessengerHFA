@@ -24,15 +24,28 @@ public class CreateMesssageActivity extends AppCompatActivity {
 
         try {
             //Intent for inner activity ReceiveMessageActivity
-//Intent intent = new Intent(this, ReceiveMessageActivity.class);
-//intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, messagetext);
+            //Intent intent = new Intent(this, ReceiveMessageActivity.class);
+            //intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, messagetext);
 
             //Intent for others app which has action send
             Intent intent = new Intent(Intent.ACTION_SEND);
+
             //type data MIME text/plain
             intent.setType("text/plain");
+
+            //output message
             intent.putExtra(Intent.EXTRA_TEXT, messagetext);
-            startActivity(intent);
+
+            //set string name chooser title
+            String chooserTitle = getString(R.string.chooser);
+
+            //output intent and title
+            Intent chosenIntent = Intent.createChooser(intent, chooserTitle);
+
+            //startActivity(intent);
+
+            //run activity chosen user
+            startActivity(chosenIntent);
 
         } catch (ActivityNotFoundException e) {}
     }
